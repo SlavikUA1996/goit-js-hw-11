@@ -5,8 +5,10 @@ import Notiflix from 'notiflix';
 
 const searchForm = document.querySelector('#search-form');
 const gallery = document.querySelector('.gallery');
-const loadMoreBtn = document.querySelector('.btn-load-more');
+const loadMoreBtn = document.querySelector('.load-more');
 let query = '';
+let page = 1;
+const perPage = 40;
 
 
 searchForm.addEventListener('submit', onSearchForm);
@@ -14,6 +16,8 @@ loadMoreBtn.addEventListener('click', onLoadMoreBtn);
 
 function onSearchForm(e) {
     e.preventDefault();
+    page = 1;
+    query = e.currentTarget.searchQuery.value.trim();
     gallery.innerHTML = '';
     loadMoreBtn.classList.add('is-hidden');
 
@@ -26,7 +30,7 @@ if (query === '') {
 
     fetchImages(query, page, perPage)
         .then(({ data }) => {
-            if (data === 0) {
+            if (data.totalHits === 0) {
                 alertNoImagesFound()
             }
             else {

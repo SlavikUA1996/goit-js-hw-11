@@ -1,30 +1,32 @@
 export { renderGallery }
 
 const gallery = document.querySelector('.gallery');
-const galleryEl = document.querySelector('.gallery');
+const galleryEl = document.querySelector('.gallery .a');
 
 
 function renderGallery(images) {
     const markup = images.map(images => {
         const { webformatURL, largeImageURL, tags, likes, views, comments, downloads } = images;
 
-        return `<div class="photo-card">
-  <img src="" alt="" loading="lazy" />
+      return `<a href="${largeImageURL}">
+        <div class="photo-card" id="${id}">
+  <img src="${webformatURL}" alt="${tags}" loading="lazy" />
   <div class="info">
     <p class="info-item">
-      <b>Likes</b>
+      <b>Likes</b>${likes}
     </p>
     <p class="info-item">
-      <b>Views</b>
+      <b>Views</b>${views}
     </p>
     <p class="info-item">
-      <b>Comments</b>
+      <b>Comments</b>${comments}
     </p>
     <p class="info-item">
-      <b>Downloads</b>
+      <b>Downloads</b>${downloads}
     </p>
   </div>
-</div>`
+</div>
+</>`
     }).join('');
 
     gallery.insertAdjacentHTML('beforeend', markup)
