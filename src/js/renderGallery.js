@@ -6,7 +6,7 @@ const galleryEl = document.querySelector('.gallery .a');
 
 function renderGallery(images) {
     const markup = images.map(images => {
-        const { webformatURL, largeImageURL, tags, likes, views, comments, downloads } = images;
+        const {id, webformatURL, largeImageURL, tags, likes, views, comments, downloads } = images;
 
       return `<a href="${largeImageURL}">
         <div class="photo-card" id="${id}">
