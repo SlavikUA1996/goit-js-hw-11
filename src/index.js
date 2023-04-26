@@ -1,3 +1,4 @@
+import './css/styles.css';
 import { fetchImages } from './js/fetchImages';
 import { renderGallery } from './js/renderGallery';
 import Notiflix from 'notiflix';
